@@ -1,0 +1,280 @@
+{
+    {{ if ( eq .Values.amf.includeDayOne true) }}
+    "amfProfile": {
+    "nfInstanceId": {{ .Values.nf.nfinstanceid | quote }},
+    "nfType": "AMF",
+    "nfStatus": "REGISTERED",
+    "plmnList": [
+      {
+        "mcc": "405",
+        "mnc": "05"
+      }
+    ],
+    "sNssais": [
+      {
+        "sst": 21,
+        "sd": "000002",
+        "sdRanges":[{
+          "start":"000001",
+          "end":"100001"
+          }]
+      },
+      {
+        "sst": 31,
+        "sd": "000003",
+        "sdRanges":[{
+          "start":"000001",
+          "end":"100001"
+          }]
+      }
+    ],
+    "fqdn": "amf-gw.{{ .Release.Namespace }}",
+    "ipv4Addresses": ["192.168.123.250"],
+    "ipv6Addresses": ["e80::fe9:8337:bd76:ce1"],
+    "allowedPlmns": [
+      {
+        "mcc": "405",
+        "mnc": "05"
+      }
+    ],
+    "allowedNssais": [
+      {
+        "sst": 21,
+        "sd": "000002",
+        "sdRanges":[{
+          "start":"000001",
+          "end":"100001"
+          }]
+      },
+      {
+        "sst": 31,
+        "sd": "000003",
+        "sdRanges":[{
+          "start":"000001",
+          "end":"100001"
+          }]
+      }
+    ],
+    "priority": 100,
+    "capacity": 500,
+    "defaultNotificationSubscriptions": [
+          {
+            "notificationType": "LOCATION_NOTIFICATION",
+            "callbackUri": "http://amf-gw.mvnr-amf-{{ .Values.nf.nfId }}.svc.cluster.local:8080/n1MessageNotify",
+            "n1MessageClass": "5GMM"
+          }
+    ],
+    "locality" : "RCC1",
+    "nfSetIdList":[{
+      "nfSetId":"set200.region32.amfset.5gc.mnc005.mcc405"
+      }
+    ],
+
+    "nfServices": [
+      {
+        "serviceInstanceId": "namf-comm_00",
+        "serviceName": "namf-comm",
+        "versions": [
+          {
+            "apiVersionInUri": "v1",
+            "apiFullVersion": "1.0.1"
+          }
+        ],
+        "scheme": "HTTP",
+        "nfServiceStatus": "REGISTERED",
+        "fqdn": "amf-gw.{{ .Release.Namespace }}",
+        "ipEndPoints": [
+          {
+            "idx": "4",
+            "ipv4Address": "127.0.0.1",
+            "transport": "TCP",
+            "port": 8080
+          },
+          {
+            "idx": "6",
+            "ipv6Address": "::1",
+            "transport": "TCP",
+            "port": 8080
+          }
+        ],
+        "defaultNotificationSubscriptions": [
+          {
+            "notificationType": "LOCATION_NOTIFICATION",
+            "callbackUri": "http://amf-gw.mvnr-amf-{{ .Values.nf.nfId }}.svc.cluster.local:8080/n1MessageNotify",
+            "n1MessageClass": "5GMM"
+          }
+        ],
+        "allowedPlmns": [
+          {
+            "mcc": "405",
+            "mnc": "05"
+          }
+        ],
+        "allowedNfTypes": ["AMF","SMF","NSSF"],
+        "allowedNfDomains": ["*"],
+        "allowedNssais": [
+          {
+            "sst": 21,
+            "sd": "000002"
+          },
+          {
+            "sst": 31,
+            "sd": "000003"
+          }
+        ],
+        "priority": 100,
+        "capacity": 200
+      },
+      {
+        "serviceInstanceId": "namf-evts_00",
+        "serviceName": "namf-evts",
+        "versions": [
+          {
+            "apiVersionInUri": "v1",
+            "apiFullVersion": "1.0.1"
+          }
+        ],
+        "scheme": "HTTP",
+        "nfServiceStatus": "REGISTERED",
+        "fqdn": "amf-ee.{{ .Release.Namespace }}",
+        "ipEndPoints": [
+          {
+            "idx": "4",
+            "ipv4Address": "127.0.0.1",
+            "transport": "TCP",
+            "port": 8080
+          },
+          {
+            "idx": "6",
+            "ipv6Address": "::1",
+            "transport": "TCP",
+            "port": 3000
+          }
+        ],
+        "allowedPlmns": [
+          {
+            "mcc": "405",
+            "mnc": "05"
+          }
+        ],
+        "allowedNfTypes": ["AMF","SMF","NSSF"],
+        "allowedNfDomains": ["*"],
+        "allowedNssais": [
+          {
+            "sst": 21,
+            "sd": "000002"
+          },
+          {
+            "sst": 31,
+            "sd": "000003"
+          }
+        ],
+        "priority": 1,
+        "capacity": 200
+      },
+      {
+        "serviceInstanceId": "namf-mt_00",
+        "serviceName": "namf-mt",
+        "versions": [
+          {
+            "apiVersionInUri": "v1",
+            "apiFullVersion": "1.0.1"
+          }
+        ],
+        "scheme": "HTTP",
+        "nfServiceStatus": "REGISTERED",
+        "fqdn": "amf-mt.{{ .Release.Namespace }}",
+        "ipEndPoints": [
+          {
+            "idx": "4",
+            "ipv4Address": "127.0.0.1",
+            "transport": "TCP",
+            "port": 8080
+          },
+          {
+            "idx": "6",
+            "ipv6Address": "::1",
+            "transport": "TCP",
+            "port": 3000
+          }
+        ],
+        "defaultNotificationSubscriptions": [
+          {
+            "notificationType": "LOCATION_NOTIFICATION",
+            "callbackUri": "http://amf-gw.mvnr-amf-{{ .Values.nf.nfId }}.svc.cluster.local:8080/n1MessageNotify",
+            "n1MessageClass": "5GMM"
+          }
+        ],
+        "allowedPlmns": [
+          {
+            "mcc": "405",
+            "mnc": "05"
+          }
+        ],
+        "allowedNfTypes": ["AMF", "SMF","NSSF"],
+        "allowedNfDomains": ["*"],
+        "allowedNssais": [
+          {
+            "sst": 21,
+            "sd": "000002"
+          },
+          {
+            "sst": 31,
+            "sd": "000003"
+          }
+        ],
+        "priority": 1,
+        "capacity": 200
+      }
+    ],
+    "amfInfo": {
+      "amfRegionId": "32",
+      "amfSetId": "200",
+      "taiList": [
+        {
+          "idx": 1,
+          "plmnId":
+            {
+              "mcc": "405",
+              "mnc": "05"
+            },
+          "tac": "000065"
+        }
+      ],
+      "guamiList": [
+        {
+          "idx": 1,
+          "plmnId":
+            {
+              "mcc": "405",
+              "mnc": "05"
+            },
+          "amfId": "32800c"
+        }
+      ],
+      "taiRangeList": [
+        {
+          "idx": 1,
+          "plmnId":
+            {
+              "mcc": "405",
+              "mnc": "05"
+            },
+          "tacRangeList": [
+            {
+              "start": "000066",
+              "end": "000067"
+            }
+          ]
+        }
+      ]
+    }
+  }
+  {{ else }}
+  "amfProfile": {
+    "nfInstanceId": {{ .Values.nf.nfinstanceid | quote }},
+    "nfType": "AMF",
+    "nfStatus": "REGISTERED"
+  }
+  {{ end }}
+}
